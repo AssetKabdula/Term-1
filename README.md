@@ -1,5 +1,10 @@
 # Term-1
-Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
+Term Project 1 for "Data Engineering 1: SQL and Different Shapes of Data" course
+
+Project: Loan Insights and Risk Analysis 
+
+Author: Asset Kabdula
+
 # Table of Contents
 - [Project Overview](#project-overview)
 - [Data Source Details](#data-source-details)
@@ -18,10 +23,10 @@ Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
 ## Repository Structure
 The repository is organized as follows:
 - Term-1/: Main project folder
-  - data/: Contains CSV files with raw data
-  - SQL outputs: Contains ER diagram and Analytical Table snapshot
-  - term_1.sql: The SQL code for the project
-  - README.md: Description of the project
+  - `data/`: Contains CSV files with raw data
+  - `SQL_Outputs`: Contains ER diagram and Analytical Table snapshot
+  - `term_1.sql`: The SQL code for the project
+  - `README.md`: Description of the project
 
 ## Project Overview
 The goal of this project is to analyze loan profiles, gender relationship with status of loans, average loan amount, average duration of loans, seasonal trends in taking loans among customers of Czech Bank. 
@@ -31,7 +36,7 @@ The project consists of the following components:
 - Operational layer: creating table structures and importing the dataset
 - Data analytics plan: analytics to be executed on the data
 - Analytical layer: analytical data structure with necessary columns from operational layer
-- ETL pipeline: extracting raw data from CSV files, transforming it through cleaning and merging relevant columns, and loading the cleaned data into analytical tables. Triggers and stored procedures are used.
+- ETL pipeline: extracting raw data from CSV files, transforming it through cleaning and merging relevant columns, and loading the cleaned data into analytical tables. Triggers and stored procedures are used
 - Data mart: views as data marts
 
 ## Data Source Details
