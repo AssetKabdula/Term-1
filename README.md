@@ -37,14 +37,14 @@ The project consists of the following components:
 ## Data Source Details
 The Berka dataset is a collection of financial information from a Czech bank. The dataset deals with over 5,300 bank clients with approximately 1,000,000 transactions. Additionally, the bank represented in the dataset has extended close to 700 loans and issued nearly 900 credit cards, all of which are represented in the data.
 - Table Descriptions:
-  - account.csv: each record describes static characteristics of an account
-  - client.csv: each record describes characteristics of a client
-  - credit.csv: Each record describes a credit card issued to an account
-  - disp.csv: Each record relates together a client with an account i.e. this relation describes the rights of clients to operate accounts
-  - district.csv: Each record describes demographic characteristics of a district
-  - loan.csv: Each record describes a loan granted for a given account
-  - order.csv: Each record describes characteristics of a payment order
-  - trans.csv: Each record describes one transaction on an account
+  - `account.csv`: each record describes static characteristics of an account
+  - `client.csv`: each record describes characteristics of a client
+  - `credit.csv`: Each record describes a credit card issued to an account
+  - `disp.csv`: Each record relates together a client with an account i.e. this relation describes the rights of clients to operate accounts
+  - `district.csv`: Each record describes demographic characteristics of a district
+  - `loan.csv`: Each record describes a loan granted for a given account
+  - `order.csv`: Each record describes characteristics of a payment order
+  - `trans.csv`: Each record describes one transaction on an account
 - Entity-Relationship Description:
   - Each account has both static characteristics (e.g. date of creation, address of the branch) given in relation "account" and dynamic characteristics (e.g. payments debited or credited, balances) given in relations "permanent order" and "transaction".
   - Relation "client" describes characteristics of persons who can manipulate with the accounts.
@@ -56,7 +56,7 @@ The Berka dataset is a collection of financial information from a Czech bank. Th
 
 ## Operational Data Layer
 - Data Structure - ER Diagram
-![ER_Diagram](images/ER_Diagram.png)
+![ER_Diagram](ER_Diagram.png)
 This includes 8 relational tables, 1 analytical table, 6 views, 2 stored procedures and 1 trigger.
 
 ## Analytics Plan
@@ -106,8 +106,34 @@ Regional differences play a significant role in understanding loan behavior, and
 Loan amounts across districts: Compare the average loan amount by district to determine which districts issue larger loans.
 Loan counts by districts: Analyze how many loans are being issued in each district and which districts contribute most to the overall loan volume.
 
-## Analytical Data Layer
+## Analytical Data Layer : `analytical_data`
+Denormalized Data Structure:
+Columns:
+- Loan Information:
+  - `loan_id`: Primary identifier for each loan
+  - `loan_amount`: Amount of the loan
+  - `loan_duration`: Duration of the loan
+  - `loan_payments`: Monthly Payments on Loan
+  - `loan_status`: Categorical status of the loan (A' stands for contract finished, no problems; 'B' stands for contract finished, loan not payed;
+'C' stands for running contract, OK thus-far; 'D' stands for running contract, client in debt)
+  - `loan_date`: Date the loan was issued
 
+- Transaction Information:
+  - `most_frequent_type`: Most frequent transaction type (debit/credit).
+  - `total_transaction_amount`: Total sum of all transactions 
+  - `avg_transaction_balance`: Average balance of transactions
+  - `transaction_count`: Total number of transactions
+  - `most_frequent_k_symbol`: The most frequent transaction characteristic
+
+- Credit Card Information:
+  - `credit_type`: Type of credit associated with the client, such as 'Junior', 'Classic', and 'Gold'
+
+- Client Information:
+  - `gender`: Gender of the client
+
+- District Information:
+  - `district_name`: Name of the district where the client resides
+  - `district_average_salary`: Average salary of the district's population
 
 ## ETL Pipeline
 Information on how to get in touch...
