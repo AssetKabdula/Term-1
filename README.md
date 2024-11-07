@@ -50,6 +50,7 @@ The Berka dataset is a collection of financial information from a Czech bank. Th
   - `loan.csv`: Each record describes a loan granted for a given account
   - `order.csv`: Each record describes characteristics of a payment order
   - `trans.csv`: Each record describes one transaction on an account
+  
 - Entity-Relationship Description:
   - Each account has both static characteristics (e.g. date of creation, address of the branch) given in relation "account" and dynamic characteristics (e.g. payments debited or credited, balances) given in relations "permanent order" and "transaction".
   - Relation "client" describes characteristics of persons who can manipulate with the accounts.
@@ -69,50 +70,30 @@ This analysis aims to derive insights from the Berka dataset, with a focus on un
 
 1. Client Financial Profiles
    
-This section explores how various client attributes and their financial behaviors are associated with their loans.
-
-Distribution of loan amounts across client demographics: Understand how loan amounts vary by gender, loan type, and region.
-Loan amount categorization: Classify clients into segments (e.g., Top 20% loan amount vs. Below 80% loan amount) based on their loan amounts and financial behavior.
-Loan default patterns by region: Identify if there is a regional correlation to loan defaults and examine how different regions contribute to the overall default rate.
-Average transaction amounts by loan type: Calculate the average transaction amount per loan type (e.g., personal loans, home loans), and observe trends within each loan type.
+This section explores how various client attributes and their financial behaviors are associated with their loans. Understand how loan amounts vary by gender, loan type, and region.
 
 2. Loan Status by Demographics
    
 This section will analyze the relationship between demographic factors (like gender) and loan status, providing insights into loan performance across different client groups.
 
-Loan status and gender relationship: Explore how loan status (e.g., default, repaid) varies across different genders. Are males or females more likely to default?
-Loan amounts by gender: Compare the average loan amounts for male and female clients and assess any gender-based disparities.
-
 3. Loan Duration and Gender
 
 This analysis looks at how the loan duration correlates with gender, exploring whether certain genders take loans for longer or shorter periods on average.
-
-Average loan duration by gender: Assess the average duration of loans for different genders and determine whether one group tends to take longer-term loans than the other.
-Loan amount versus loan duration: Investigate whether the loan amount is a significant factor in determining the loan duration for different genders.
 
 4. Monthly Loan Trends
 
 Analyzing loan patterns over time will provide insights into when clients are more likely to take out loans, and whether there are seasonal variations.
 
-Month-wise loan activity: Identify which months experience the highest loan issuance. Are loans concentrated during specific times of the year?
-Monthly loan amount trends: Analyze the average loan amount per month to identify if there are seasonal spikes or downturns in loan amounts.
-
 5. Loan Default and Pension Payments by Gender
 
 Understanding how gender relates to loan defaults and pension payments will provide deeper insights into client behavior.
-
-Gender-based pension payments: Analyze pension payments by gender to see if there are any differences in the average pension amounts received.
-Loan defaults and gender: Investigate whether there are gender-specific trends in loan defaults and if these clients are taking larger or smaller loans.
 
 6. Loan Amounts and Regional Variations
 
 Regional differences play a significant role in understanding loan behavior, and analyzing these trends will help identify areas with higher loan demand or higher default rates.
 
-Loan amounts across districts: Compare the average loan amount by district to determine which districts issue larger loans.
-Loan counts by districts: Analyze how many loans are being issued in each district and which districts contribute most to the overall loan volume.
-
 ## Analytical Data Layer 
-`analytical_data`
+`analytical_data table`
 
 Denormalized Data Structure:
 Columns:
