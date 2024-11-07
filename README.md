@@ -13,8 +13,8 @@ Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
 - [Contact](#ConclusionandFutureWork)
 
 # Usage Instructions
-1. Clone the repository 
-[Term-1 GitHub Repository](https://github.com/AssetKabdula/Term-1)
+1. Clone the repository
+git clone https://github.com/AssetKabdula/Term-1)
 
 
 ## Project Overview
