@@ -1,17 +1,16 @@
 # Term-1
 Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
 # Table of Contents
-- [Project Overview](#ProjectOverview)
-- [Data Source Details](#DataSourceDetails)
-- [Data Structure - ER Diagram](#DataStructure-ERDiagram)
-- [Operational Data Layer](#OperationalDataLayer)
-- [Analytics Plan](#AnalyticsPlan)
-- [Analytical Data Layer](#AnalyticalDataLayer)
-- [ETL Pipeline](#ETLPipelineDesign)
-- [Views](#Views)
-- [Conclusion](#ConclusionandFutureWork)
-- [Future work](#Futurework)
-- [Contact](#ConclusionandFutureWork)
+- [Project Overview](#project-overview)
+- [Data Source Details](#data-source-details)
+- [Operational Data Layer](#operational-data-layer)
+- [Analytics Plan](#analytics-plan)
+- [Analytical Data Layer](#analytical-data-layer)
+- [ETL Pipeline](#etl-pipeline)
+- [Views](#views)
+- [Conclusion](#conclusion)
+- [Future Work](#future-work)
+- [Contact](#contact)
 
 ## Usage Instructions
 1. Clone the repository: 
@@ -107,7 +106,9 @@ Regional differences play a significant role in understanding loan behavior, and
 Loan amounts across districts: Compare the average loan amount by district to determine which districts issue larger loans.
 Loan counts by districts: Analyze how many loans are being issued in each district and which districts contribute most to the overall loan volume.
 
-## Analytical Data Layer : `analytical_data`
+## Analytical Data Layer 
+`analytical_data`
+
 Denormalized Data Structure:
 Columns:
 - Loan Information:
