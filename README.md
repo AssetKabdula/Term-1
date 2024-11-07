@@ -57,7 +57,7 @@ The Berka dataset is a collection of financial information from a Czech bank. Th
 
 ## Operational Data Layer
 - Data Structure - ER Diagram
-![ER_Diagram](ER_Diagram.png)
+![ER_Diagram](SQL_Outputs/ER_Diagram.png)
 This includes 8 relational tables, 1 analytical table, 6 views, 2 stored procedures and 1 trigger.
 
 ## Analytics Plan
@@ -136,7 +136,7 @@ Columns:
   - `district_name`: Name of the district where the client resides
   - `district_average_salary`: Average salary of the district's population
 
-![analytical_data](analytical_data.png)
+![analytical_data](SQL_Outputs/analytical_data.png) 
 
 ## ETL Pipeline
 - Stored Procedures:
