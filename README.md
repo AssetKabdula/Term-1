@@ -9,8 +9,13 @@ Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
 - [Analytical Data Layer](#AnalyticalDataLayer)
 - [ETL Pipeline](#ETLPipelineDesign)
 - [Views](#Views)
-- [Conclusion and Future Work](#ConclusionandFutureWork)
+- [Conclusion](#ConclusionandFutureWork)
 - [Contact](#ConclusionandFutureWork)
+
+# Usage Instructions
+1. Clone the repository 
+https://github.com/AssetKabdula/Term-1
+
 
 ## Project Overview
 This section provides an overview of the project...
@@ -36,7 +41,7 @@ Information on how to get in touch...
 ## Views
 Guidelines for contributing...
 
-## Conclusion and Future Work
+## Conclusion
 Details about the project’s license...
 
 ## Contact
