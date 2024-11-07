@@ -10,6 +10,7 @@ Term Project 1 for Data Engineering 1: SQL and Different Shapes of Data course
 - [ETL Pipeline](#ETLPipelineDesign)
 - [Views](#Views)
 - [Conclusion](#ConclusionandFutureWork)
+- [Future work](#Futurework)
 - [Contact](#ConclusionandFutureWork)
 
 ## Usage Instructions
@@ -112,7 +113,7 @@ Columns:
 - Loan Information:
   - `loan_id`: Primary identifier for each loan
   - `loan_amount`: Amount of the loan
-  - `loan_duration`: Duration of the loan
+  - `loan_duration`: Duration of the loan in months
   - `loan_payments`: Monthly Payments on Loan
   - `loan_status`: Categorical status of the loan (A' stands for contract finished, no problems; 'B' stands for contract finished, loan not payed;
 'C' stands for running contract, OK thus-far; 'D' stands for running contract, client in debt)
@@ -126,7 +127,7 @@ Columns:
   - `most_frequent_k_symbol`: The most frequent transaction characteristic
 
 - Credit Card Information:
-  - `credit_type`: Type of credit associated with the client, such as 'Junior', 'Classic', and 'Gold'
+  - `credit_type`: Type of credit associated with the client, such as 'Junior', 'Classic', 'Gold' or 'Not holder'
 
 - Client Information:
   - `gender`: Gender of the client
@@ -135,14 +136,94 @@ Columns:
   - `district_name`: Name of the district where the client resides
   - `district_average_salary`: Average salary of the district's population
 
+![analytical_data](analytical_data.png)
+
 ## ETL Pipeline
-Information on how to get in touch...
+- Stored Procedures:
+  - The `transform_district` procedure standardizes the format of district names by replacing spaces with underscores
+  - The `transform_transaction` procedure standardizes transaction data by converting types to 'Credit' or 'Withdrawal' and replacing transaction codes (k_symbol) with translated descriptions
+
+- Trigger:
+  - The `after_loan_insert` trigger is an ETL process that ensures relevant client, transaction, district, and loan data is inserted into the analytical_data table every time a new loan is added to the loan table
 
 ## Views
-Guidelines for contributing...
+1. Client Financial Profiles View (client_financial_profiles)
+
+This view provides detailed financial profiles of clients, highlighting key characteristics such as loan amount, loan status, and district-specific loan percentiles.
+
+- Fields:
+  - `loan_id`: Unique identifier for each loan
+  - `gender`: Gender of the client ('M', 'F')
+  - `credit_type`: Type of credit the client has
+  - `loan_amount`: The total loan amount granted to the client
+  - `loan_status`: The current status of the loan 
+  - `loan_duration`: The loan duration in months
+  - `avg_transaction_by_credit_type`: The average transaction amount for each credit type
+  - `loan_percentile_in_district`: The percentile ranking of the loan amount within the client’s district (indicating how the loan compares to others in the same region)
+  - `district_default_count`: The count of defaults within the client's district
+
+- Use Case: Client Segmentation: This view enables segmentation of clients into different financial profiles based on their loan amounts, credit types, and statuses, as well as their positioning within their district's loan distribution. This can help identify high-risk clients or those with better credit potential.
+
+2. Gender Relationship with Loan Status View (gender_loan_status)
+This view analyzes the relationship between the client's gender and the status of their loans. It aggregates loan data based on gender and loan status, providing insights into how loan outcomes differ between male and female clients.
+
+- Fields:
+  - `gender`: Gender of the client ('M', 'F').
+  - `loan_status`: Current status of the loan
+  - `loan_count`: Total count of loans based on the gender and loan status
+  - `avg_loan_amount`: Average loan amount for clients within the specified gender and loan status
+
+- Use Case: Gender-Based Loan Risk Analysis: This view helps in understanding how different genders are represented in various loan statuses. If one gender has higher default rates, targeted intervention can be designed.
+
+3. Gender Relationship with Average Loan Amount and Duration View (gender_avg_loan_amount)
+This view examines the relationship between gender and the average loan amount and loan duration. It provides insights into whether men or women typically take larger or longer loans.
+
+- Fields:
+  - `gender`: Gender of the client (e.g., 'Male', 'Female').
+  - `avg_loan_amount`: Average loan amount for each gender.
+  - `avg_loan_duration`: Average loan duration for each gender.
+
+- Use Case: Loan Product Design: By analyzing the average loan amounts and durations by gender, banks can design more relevant loan products that cater to the specific needs of each gender group.
+
+4. Monthwise Loan Activity View (monthwise_loan_activity)
+This view provides insights into loan activity trends by month, including the count and average amount of loans taken in each month. It helps understand seasonality or monthly patterns in loan demand.
+
+- Fields:
+  - `loan_month`: The month in which the loan was taken
+  - `loan_count`: Count of loans taken during the specific month
+  - `avg_loan_amount`: Average loan amount for loans taken in that month
+
+- Use Case: Loan Demand Forecasting: This view helps predict periods of high or low loan demand, allowing financial institutions to adjust marketing and outreach efforts accordingly.
+
+5. Gender Relationship with Average Old-Age Pension Payment Amount View (gender_average_pension_payment)
+This view examines the relationship between gender and the average old-age pension payment amount. It focuses on the gender-based distribution of pension payments, particularly for clients receiving old-age pensions.
+
+- Fields:
+  - `gender`: Gender of the client ('M', 'F')
+  - `average_pension_payment`: The average pension payment for clients who have 'Old-age Pension' transactions
+  
+- Use Case: Pension Policy Insights: This view helps assess gender-based differences in pension payments, which can inform policies on pension distribution or adjustments to ensure fairness.
+
+6. Amount of Loan Relationship with Districts View (district_loan_summary)
+This view provides an analysis of the relationship between loan amounts and districts, summarizing the average loan amounts and the total number of loans in each district. It highlights regional trends in loan issuance and amounts.
+
+- Fields:
+  - `district_name`: The name of the district
+  - `average_loan_amount`: The average loan amount issued within that district
+  - `number_of_loans`: The total number of loans issued in that district
+
+- Use Case: Regional Loan Distribution Analysis: This view helps financial institutions analyze how loan amounts vary by district, providing insights into regional financial needs and behaviors.
 
 ## Conclusion
-Details about the project’s license...
+This project offers an in-depth analysis of loan repayment patterns, examining how client demographics, including gender and district-specific factors, as well as account behaviors, influence loan statuses. By establishing an effective analytical layer and utilizing stored procedures, triggers, and data marts, the project provides valuable insights into customer loan behaviors. These insights are crucial for identifying clients with high risk and understanding how gender, district location, and individual financial profiles affect loan repayment trends. Such analysis support in recognizing demographic and behavioral patterns that may impact loan outcomes and repayment potential.
+
+## Future work
+Building on the insights gained from this project, future analysis could focus on tracking the movement of average monthly balances to identify any behavioral patterns that might indicate a potential default on payments. Additionally, this could help determine whether the bank should consider offering higher-limit cards to certain clients based on their financial behaviors.
 
 ## Contact
-Information on how to get in touch...
+Please don't hesitate to reach out with any suggestions or ideas for future improvements. Thank you for reviewing this project!
+
+Asset Kabdula- kabdula_asset@student.ceu.edu
+
+Project Link: https://github.com/AssetKabdula/Term-1
+
